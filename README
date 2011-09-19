@@ -1,1 +1,7 @@
-Working off of JanxSpirit's scalatra mongo template.
+Template for Scala-Akka-MongoDB projects for SBT 10
+
+In command line:
+
+g8 itam/scala_akka_mongo
+cd <project_name>
+sbt -Denv=dev
