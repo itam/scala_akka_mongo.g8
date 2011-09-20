@@ -4,7 +4,6 @@ import com.mongodb.casbah.Imports._
 import com.mongodb.casbah.commons.MongoDBObject
 import akka.actor.Actor_
 import akka.routing._
-import org.scalatra.ScalatraKernel.
 
 class $actor_name$(poolSize: Int, collection: MongoCollection) extends Actor with DefaultActorPool
                                with FixedCapacityStrategy

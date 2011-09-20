@@ -34,3 +34,5 @@ Icon?
 Thumbs.db
 
 *.idea
+*.iml
+*.history
