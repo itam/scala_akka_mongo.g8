@@ -11,15 +11,15 @@ class $servlet_name$ extends ScalatraServlet {
 
   val myActor = Actor.registry.actorsFor[$actor_name$](classOf[$actor_name$]).head
 
+  post() {
+    myActor ! "post"
+  }
+
   get("/:id") {
     "GET with id: " + params("id")
   }
 
-  get("/$name$") {
-    "GET with var: " + params("var")
-  }
-
-  post() {
-    myActor ! "post"
+  put("/:id") {
+    "PUT with id: " + params("id")
   }
 }

@@ -42,6 +42,8 @@ abstract class EnvironmentBasedActorRegistry(env: String, http: Http) {
   def host: String = prop("host", "$mongodb_host$")
   def port: Int = prop("port", 8140)
 
+  def poolSize = prop("poolSize", 500)
+
   val urlList = mongoUrl.split(",").toList.map(new ServerAddress(_))
   val db = urlList match {
     case List(s) => MongoConnection(s)(mongoDbName)
@@ -49,7 +51,7 @@ abstract class EnvironmentBasedActorRegistry(env: String, http: Http) {
     case s: List[ServerAddress] => MongoConnection(s)(mongoDbName)
   }
 
-  val myActor = actorOf(new $actor_name$(db("$mongodb_db$"))).start()
+  val myActor = actorOf(new $actor_name$(poolSize, db("$mongodb_db$"))).start()
 
   val supervisor = Supervisor(
     SupervisorConfig(
