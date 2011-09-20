@@ -1,9 +1,15 @@
 package com.$domain_name$.$product_name$.$name$.actor
 
+import akka.dispatch.Dispatchers
 import com.mongodb.casbah.Imports._
 import com.mongodb.casbah.commons.MongoDBObject
-import akka.actor.Actor_
+import akka.actor.Actor._
 import akka.routing._
+
+
+object $actor_name${
+  val dispatcher = Dispatchers.newExecutorBasedEventDrivenWorkStealingDispatcher("$actor_name$-dispatcher").build
+}
 
 class $actor_name$(poolSize: Int, collection: MongoCollection) extends Actor with DefaultActorPool
                                with FixedCapacityStrategy
